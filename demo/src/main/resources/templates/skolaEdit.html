@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Zmena udajov </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<header th:insert="blocks/header :: header"> </header>
+
+
+<div class = "container mt-5">
+    <h1>Zmenit udaje </h1>
+
+    <div th:each = "el : ${school}" >
+        <div th:each = "el2 : ${address}">
+            <form method = "post">
+                <div class="form-group">
+                    <label for="name">Novy Nazov Skoly:</label>
+                    <input type="text" class="form-control" id="name" name="name"  aria-describedby="name" th:value="${el.name}"><br>
+                    <label for="street">Nova Ulica:</label>
+                    <input type="text" class="form-control" id="street" name="street" aria-describedby="street" th:value="${el2.street}"><br>
+                    <label for="village">Nova Obec:</label>
+                    <input type="text" class="form-control" id="village" name="village" aria-describedby="village" th:value="${el2.village}"><br>
+                    <label for="zip">Nove PSC:</label>
+                    <input type="text" class="form-control" id="zip" name="zip" aria-describedby="zip" th:value="${el2.zip}"><br>
+                    <label for="district">Novy Okres:</label>
+                    <input type="text" class="form-control" id="district" name="district" aria-describedby="district" th:value="${el.district}"><br>
+                    <label for="region">Novy Kraj</label>
+                    <input type="text" class="form-control" id="region" name="region" aria-describedby="region" th:value="${el.region}"><br>
+                    <label for="footprint">Novy Footprint</label>
+                    <input type="number" class="form-control" id="footprint" name="footprint" step="0.001" aria-describedby="footprint" th:value="${el.footprint}"><br>
+                    <label for="year">Novy Rok</label>
+                    <input type="number" class="form-control" id="year" name="year" aria-describedby="year" th:value="${el.year}"><br>
+                    <button type = "submit" class ="btn btn-success">Zmenit</button><br>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+<div th:insert="blocks/footer :: footer"> </div>
+
+</body>
+</html>

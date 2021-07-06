@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Podrobnosti </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<header th:insert="blocks/header :: header"> </header>
+
+
+<div class = "container mt-5">
+    <h1>Podrobnosti </h1>
+    <div th:each = "el : ${school}" class = "alert alert-info mt-2">
+        <h3 th:text = "${el.name}"> </h3>
+
+        <p><b>District: </b> <span th:text = "${el.district}"/></p>
+        <p><b>Region: </b> <span th:text = "${el.region}"/></p>
+        <p><b>Footprint: </b> <span th:text = "${el.footprint}"/></p>
+        <p><b>Year: </b> <span th:text = "${el.year}"/></p>
+
+        <div th:each = "el2 : ${address}">
+
+            <p><b>Street: </b> <span th:text = "${el2.street}"/></p>
+            <p><b>Village: </b> <span th:text = "${el2.village}"/></p>
+            <p><b>Zip: </b> <span th:text = "${el2.zip}"/></p>
+
+
+            <a th:href ="'/zoznam_skol/' + ${el.id} + '/edit'"  class = "btn btn-warning">Zmenit udaje</a><br><br>
+            <form th:action="'/zoznam_skol/' + ${el.id} + '/remove'" method = "post">
+                <button  class = "btn btn-warning" type = "submit"> Vymazat</button>
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
+<div th:insert="blocks/footer :: footer"> </div>
+
+</body>
+</html>
